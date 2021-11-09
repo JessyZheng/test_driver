@@ -1,0 +1,1007 @@
+{
+    "device_list" : {
+        "//" : "============== safety node ==============",
+        "serial_ttyUSB1" : {
+            "driver_name" : "SerialPortDriver",
+            "dev_name" : "/dev/ttyUSB1",
+            "shared" : true,
+            "baudrate" : 1500000
+        },
+
+        "safety_stm32" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "safety_stm32",
+            "shared" : true,
+            "token_control" : true,
+            "zq_bind_port" : 19006,
+            "zq_is_client" : false,
+            "serial_device" : "serial_ttyUSB1"
+        },
+
+        "voice_module" : {
+            "max_volume" : 28
+        },
+
+        "//" : "============== vision node ==============",
+        "fork_2d_camera_power_switch" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_2d_camera_power_switch",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "group_id" : 2,
+            "index_id" : 5,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "fork_depth_camera_power_switch" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_depth_camera_power_switch",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "group_id" : 2,
+            "index_id" : 7,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "fork_2d_short_camera" : {
+            "driver_name" : "CameraDriver_HKVision",
+            "dev_name" : "fork_2d_short_camera",
+            "shared" : true,
+            "retrieve_timeout" : 100,
+            "pixel_format" : "Mono8",
+            "exposure_time_raw" :  4000,
+            "gain_raw" : 300,
+            "frame_rate" :20,
+            "gevscpd" :4850,
+            "ip_address" : "192.168.0.10"
+        },
+
+        "fork_2d_long_camera" : {
+            "driver_name" : "CameraDriver_HKVision",
+            "dev_name" : "fork_2d_long_camera",
+            "shared" : true,
+            "retrieve_timeout" : 100,
+            "pixel_format" : "Mono8",
+            "exposure_time_raw" :  3000,
+            "gain_raw" : 0,
+            "frame_rate" :20,
+            "gevscpd" :4850,
+            "ip_address" : "192.168.0.11"
+        },
+
+        "fork_depth_camera" : {
+            "driver_name" : "CameraDriver_IFM",
+            "dev_name" : "fork_depth_camera",
+            "shared" : true,
+            "retrieve_timeout" : 100
+        },
+
+        "//" : "============== master node ==============",
+        "fork_stm32_client" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "fork_stm32_client",
+            "shared" : true,
+            "zq_bind_port" : 19000,
+            "zq_is_client" : true
+        },
+
+        "fork_light_power_switch_right" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_light_power_switch_right",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "group_id" : 1,
+            "index_id" : 2,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "fork_light_power_switch_left" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_light_power_switch_left",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "group_id" : 1,
+            "index_id" : 3,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "fork_foolproof_power_switch" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_foolproof_power_switch",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "group_id" : 2,
+            "index_id" : 3,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "fork_foolproof_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_foolproof_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "group_id" : 1,
+            "index_id" : 28
+        },
+
+        "fork_front_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_front_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 2,
+            "group_id" : 0,
+            "index_id" : 19
+        },
+
+        "fork_middle_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "fork_middle_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 2,
+            "group_id" : 0,
+            "index_id" : 20
+        },
+
+        "l_finger_up_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "l_finger_up_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 1,
+            "group_id" : 0,
+            "index_id" : 15
+        },
+
+        "l_finger_down_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "l_finger_down_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 1,
+            "group_id" : 0,
+            "index_id" : 21
+        },
+
+        "r_finger_up_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "r_finger_up_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 2,
+            "group_id" : 0,
+            "index_id" : 15
+        },
+
+        "r_finger_down_detection" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "r_finger_down_detection",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 2,
+            "group_id" : 0,
+            "index_id" : 21
+        },
+
+        "chassis_stm32_client" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "chassis_stm32_client",
+            "shared" : true,
+            "zq_bind_port" : 19004,
+            "zq_is_client" : true
+        },
+
+        "chassis_camera_power_control" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "chassis_camera_power_control",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "group_id" : 0,
+            "index_id" : 8,
+            "on" : 1,
+            "off" : 0
+        },
+        "chassis_imu_power_control" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "chassis_imu_power_control",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "group_id" : 1,
+            "index_id" : 30,
+            "on" : 0,
+            "off" : 1
+        },
+
+        "stretch_left_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "stretch_left_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 0,
+            "pin_index" : 30,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["stretch", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "stretch_right_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "stretch_right_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 21,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["stretch", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "rotate_left_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "rotate_left_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 0,
+            "pin_index" : 26,
+            "active_low" : false,
+            "approach_speed" : {
+                "reference" : ["rotate", "control_param", "init_vel"],
+                "sign" : 1
+            }
+        },
+
+        "rotate_right_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "rotate_right_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 23,
+            "active_low" : false,
+            "approach_speed" : {
+                "reference" : ["rotate", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "lift_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "lift_proximity",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 18,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["lift", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "//" : "----------- tray_0 ----------",
+        "tray_0_press" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_0_press",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 0
+        },
+
+        "tray_0_limit" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_0_limit",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 1
+        },
+
+        "tray_0_detection" : {
+            "driver_name" : "BasketCheckDriver",
+            "dev_name" : "tray_0_detection",
+            "shared" : true,
+            "press_device" : "tray_0_press",
+            "limit_device" : "tray_0_limit"
+        },
+
+        "//" : "----------- tray_1 ----------",
+        "tray_1_press" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_1_press",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 2
+        },
+
+        "tray_1_limit" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_1_limit",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 3
+        },
+
+        "tray_1_detection" : {
+            "driver_name" : "BasketCheckDriver",
+            "dev_name" : "tray_1_detection",
+            "shared" : true,
+            "press_device" : "tray_1_press",
+            "limit_device" : "tray_1_limit"
+        },
+
+        "//" : "----------- tray_2 ----------",
+        "tray_2_press" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_2_press",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 4
+        },
+
+        "tray_2_limit" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_2_limit",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 5
+        },
+
+        "tray_2_detection" : {
+            "driver_name" : "BasketCheckDriver",
+            "dev_name" : "tray_2_detection",
+            "shared" : true,
+            "press_device" : "tray_2_press",
+            "limit_device" : "tray_2_limit"
+        },
+
+        "//" : "----------- tray_3 ----------",
+        "tray_3_press" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_3_press",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 6
+        },
+
+        "tray_3_limit" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_3_limit",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 7
+        },
+
+        "tray_3_detection" : {
+            "driver_name" : "BasketCheckDriver",
+            "dev_name" : "tray_3_detection",
+            "shared" : true,
+            "press_device" : "tray_3_press",
+            "limit_device" : "tray_3_limit"
+        },
+
+        "//" : "----------- tray_4 ----------",
+        "tray_4_press" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_4_press",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 8
+        },
+
+        "tray_4_limit" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "tray_4_limit",
+            "shared" : true,
+            "link_device" : "chassis_stm32_client",
+            "can_controller_id" : 1,
+            "can_node_id" : 101,
+            "group_id" : 0,
+            "index_id" : 9
+        },
+
+        "tray_4_detection" : {
+            "driver_name" : "BasketCheckDriver",
+            "dev_name" : "tray_4_detection",
+            "shared" : true,
+            "press_device" : "tray_4_press",
+            "limit_device" : "tray_4_limit"
+        },
+
+        "safety_stm32_client" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "safety_stm32_client",
+            "shared" : true,
+            "zq_bind_port" : 19006,
+            "zq_is_client" : true
+        },
+
+        "safety_24v_out_power_control" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "safety_24v_out_power_control",
+            "shared" : true,
+            "link_device" : "safety_stm32_client",
+            "group_id" : 0,
+            "index_id" : 16,
+            "on" : 0,
+            "off" : 1
+        },
+
+        "safety_oam1_power_control" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "safety_oam1_power_control",
+            "shared" : true,
+            "link_device" : "safety_stm32_client",
+            "group_id" : 0,
+            "index_id" : 15,
+            "input_dir" : false,
+            "on" : 0,
+            "off" : 1
+        },
+        "safety_oam2_power_control" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "safety_oam2_power_control",
+            "shared" : true,
+            "link_device" : "safety_stm32_client",
+            "group_id" : 1,
+            "index_id" : 12,
+            "input_dir" : false,
+            "on" : 0,
+            "off" : 1
+        },
+        "safety_sound_card_power_control" : {
+            "driver_name" : "GPIODriver",
+            "dev_name" : "safety_sound_card_power_control",
+            "shared" : true,
+            "link_device" : "safety_stm32_client",
+            "group_id" : 1,
+            "index_id" : 22,
+            "input_dir" : false,
+            "on" : 1,
+            "off" : 0
+        },
+
+
+        "serial_ttyUSB0" : {
+            "driver_name" : "SerialPortDriver",
+            "dev_name" : "/dev/ttyUSB0",
+            "shared" : true,
+            "baudrate" : 1500000
+        },
+
+        "power_stm32" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "power_stm32",
+            "shared" : true,
+            "token_control" : true,
+            "zq_bind_port" : 19005,
+            "zq_is_client" : false,
+            "serial_device" : "serial_ttyUSB0"
+        },
+
+        
+        "pack_basket_rfid" : {
+            "driver_name" : "UHF",
+            "rfid_ip" : "192.168.0.101",
+            "setup_port": 8868,
+            "rfid_report_time": 5000,
+            "listen_port": 8888,
+            "save_msg_len": 32,
+            "scan_speed"  : 0.4
+        },
+
+        "bms" : {
+            "driver_name" : "BMS_GB",
+            "dev_name" : "bms",
+            "shared" : true,
+            "link_device" : "power_stm32",
+            "controller_id" : 5,
+            "pack_address" : 1,
+            "pack_command" : 1,
+            "internal_resistance" : 0.04,
+            "resistance_pin_group" : 1,
+            "resistance_pin_index" : 20,
+            "limit_switch_pin_group" : 0,
+            "limit_switch_pin_index" : 21,
+            "ip_interface" : "eth0",
+            "device_model" : "GB"
+        },
+
+        "power_fork_board_power_control" : {
+            "driver_name": "GPIODriver",
+            "dev_name": "power_fork_board_power_control",
+            "shared": true,
+            "link_device": "power_stm32",
+            "group_id": 1,
+            "index_id": 9,
+            "input_dir": false,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "power_external_fan_power_control" : {
+            "driver_name": "GPIODriver",
+            "dev_name": "power_external_fan_power_control",
+            "shared": true,
+            "link_device": "power_stm32",
+            "group_id": 0,
+            "index_id": 28,
+            "input_dir": false,
+            "on" : 1,
+            "off" : 0
+        },
+
+        "chassis_qrcode_client" : {
+            "driver_name" : "QRCodeLocalizationSensorDriver",
+            "dev_name" : "chassis_qrcode_client",
+            "shared" : true,
+            "zq_bind_port" : 15000,
+            "zq_is_client" : true
+        },
+
+        "chassis_buzzer" : {
+            "driver_name" : "LEDDriver",
+            "dev_name" : "work_buzzer_1",
+            "shared" : true,
+            "active_low" : false,
+            "delay_on" : 500,
+            "delay_off" : 500
+        },
+
+        "//" : "============== chassis node ==============",
+        "//" : "----------- public link ----------",
+        "serial_ttyS1" : {
+            "driver_name" : "SerialPortDriver",
+            "dev_name" : "/dev/ttyS1",
+            "shared" : true,
+            "baudrate" : 1500000
+        },
+
+        "chassis_stm32" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "chassis_stm32",
+            "shared" : true,
+            "token_control" : false,
+            "zq_bind_port" : 19004,
+            "zq_is_client" : false,
+            "serial_device" : "serial_ttyS1"
+        },
+
+        "//" : "----------- chassis imu/qrcode ----------",
+        "chassis_imu" : {
+            "driver_name" : "IMUBEWISDriver",
+            "dev_name" : "chassis_imu",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "data_output_mode" : "group_auto_return",
+            "msg_group" : {
+                "group_name" : "chassis_imu",
+                "enable" : true,
+                "link_num" : 2,
+                "freq" : 10
+            },
+            "controller_id" : 5,
+            "zq_bind_port": 10081,
+            "zq_is_client" : false,
+            "vendor" : "bewis",
+            "device_model" : "bewis"
+        },
+
+        "chassis_qrcode" : {
+            "driver_name" : "QRCodeLocalizationSensorDriver",
+            "dev_name" : "chassis_qrcode",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "data_output_mode" : "group_auto_return",
+            "msg_group" : {
+                "group_name" : "chassis_qrcode",
+                "enable" : true,
+                "link_num" : 2,
+                "freq" : 5
+            },
+            "controller_id" : 0,
+            "zq_bind_port" : 15000,
+            "zq_is_client" : false,
+            "mount_rotation" : {"reference" : ["chassis", "qrcodereader", "mount_rotation"]},
+            "bias_x" : {"reference" : ["chassis", "qrcodereader", "mount_bias_x"]},
+            "bias_y" : {"reference" : ["chassis", "qrcodereader", "mount_bias_y"]},
+            "bias_theta" : {"reference" : ["chassis", "qrcodereader", "mount_bias_theta"]},
+            "vendor" : "hait",
+            "device_model" : "hait",
+            "device_sn" : "default"
+        },
+
+        "//" : "----------- chassis front obstacle ----------",
+        "chassis_front_obstacle_i_pins" : {
+            "driver_name" : "GPIOGroup",
+            "dev_name" : "chassis_front_obstacle_i_pins",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "pins" : []
+        },
+
+        "chassis_front_obstacle_o_pins" : {
+            "driver_name" : "GPIOGroup",
+            "dev_name" : "chassis_front_obstacle_o_pins",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "pins" : [
+                {"group_id" : 1, "index_id" : 4},
+                {"group_id" : 1, "index_id" : 5},
+                {"group_id" : 0, "index_id" : 16},
+                {"group_id" : 0, "index_id" : 17}
+            ]
+        },
+
+        "chassis_front_obstacle" : {
+            "driver_name" : "ObstacleAvoidanceSensorDriver",
+            "dev_name" : "chassis_front_obstacle",
+            "shared" : true,
+            "data_output_mode" : "group_auto_return",
+            "msg_group" : {
+                "group_name" : "chassis_oam",
+                "enable" : true,
+                "link_num" : 2,
+                "freq" : 50
+            },
+            "input_gpio" : "chassis_front_obstacle_i_pins",
+            "output_gpio" : "chassis_front_obstacle_o_pins",
+            "zq_bind_port" : 10082,
+            "zq_is_client" : false
+        },
+
+        "//" : "----------- chassis back obstacle ----------",
+        "chassis_back_obstacle_i_pins" : {
+            "driver_name" : "GPIOGroup",
+            "dev_name" : "chassis_back_obstacle_i_pins",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "pins" : []
+        },
+
+        "chassis_back_obstacle_o_pins" : {
+            "driver_name" : "GPIOGroup",
+            "dev_name" : "chassis_back_obstacle_o_pins",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "pins" : [
+                {"group_id" : 2, "index_id" : 12},
+                {"group_id" : 2, "index_id" : 13},
+                {"group_id" : 2, "index_id" : 14},
+                {"group_id" : 2, "index_id" : 15}
+            ]
+        },
+
+        "chassis_back_obstacle" : {
+            "driver_name" : "ObstacleAvoidanceSensorDriver",
+            "dev_name" : "chassis_back_obstacle",
+            "shared" : true,
+            "data_output_mode" : "group_auto_return",
+            "msg_group" : {
+                "group_name" : "chassis_oam",
+                "enable" : true,
+                "link_num" : 2,
+                "freq" : 50
+            },
+            "input_gpio" : "chassis_back_obstacle_i_pins",
+            "output_gpio" : "chassis_back_obstacle_o_pins",
+            "zq_bind_port" : 10083,
+            "zq_is_client" : false
+        },
+
+        "//" : "----------- chassis l/r motor ----------",
+        "chassis_left_motor" : {
+            "driver_name" : "MotorDriver_Kinco",
+            "dev_name" : "chassis_left_motor",
+            "#vendor" : "kinco",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "data_output_mode" : "manual",
+            "can_controller_id" : 0,
+            "can_node_id" : 2,
+            "zq_bind_port" : 18004,
+            "zq_is_client" : false,
+            "device_model" : "kinco"
+        },
+
+        "chassis_right_motor" : {
+            "driver_name" : "MotorDriver_Kinco",
+            "dev_name" : "chassis_right_motor",
+            "#vendor" : "kinco",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "data_output_mode" : "manual",
+            "can_controller_id" : 0,
+            "can_node_id" : 1,
+            "zq_bind_port" : 18005,
+            "zq_is_client" : false,
+            "device_model" : "kinco"
+        },
+
+        "//" : "----------- lift related ----------",
+        "lift_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "lift_proximity",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 18,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["lift", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "lift_motor" : {
+            "driver_name" : "MotorDriver_Kinco",
+            "dev_name" : "lift_motor_server",
+            "shared" : true,
+            "link_device" : "chassis_stm32",
+            "data_output_mode" : "manual",
+            "can_controller_id" : 1,
+            "can_node_id" : 1,
+            "zq_bind_port" : 10086,
+            "zq_is_client" : false,
+            "device_model" : "kinco"
+        },
+
+        "//" : "============== forklift node ==============",
+        "//" : "----------- public link ----------",
+        "serial_ttyS0" : {
+            "driver_name" : "SerialPortDriver",
+            "dev_name" : "/dev/ttyS0",
+            "shared" : true,
+            "baudrate" : 1500000
+        },
+
+        "fork_stm32" : {
+            "driver_name" : "LinkDriver",
+            "dev_name" : "fork_stm32",
+            "shared" : true,
+            "token_control" : false,
+            "zq_bind_port" : 19000,
+            "zq_is_client" : false,
+            "serial_device" : "serial_ttyS0"
+        },
+
+        "//" : "----------- finger related ----------",
+        "finger_left_motor" : {
+            "driver_name" : "MotorDriver_FB001",
+            "dev_name" : "finger_left_motor",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "motor_id" : 1,
+            "can_controller_id" : 1,
+            "can_node_id" : 1,
+            "zq_bind_port" : 10060,
+            "zq_is_client" : false,
+            "device_model" : "drv8801"
+        },
+
+        "finger_right_motor" : {
+            "driver_name" : "MotorDriver_FB001",
+            "dev_name" : "finger_right_motor",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "motor_id" : 1,
+            "can_controller_id" : 1,
+            "can_node_id" : 2,
+            "zq_bind_port" : 10061,
+            "zq_is_client" : false,
+            "device_model" : "drv8801"
+        },
+
+        "//" : "----------- stretch related ----------",
+        "stretch_left_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "stretch_left_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 0,
+            "pin_index" : 30,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["stretch", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "stretch_right_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "stretch_right_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 21,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["stretch", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "stretch_motor" : {
+            "driver_name" : "MotorDriver_Kinco",
+            "dev_name" : "stretch_motor",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "can_controller_id" : 0,
+            "can_node_id" : 2,
+            "zq_bind_port" : 10070,
+            "zq_is_client" : false,
+            "device_model" : "kinco"
+        },
+
+        "//" : "----------- rotate related ----------",
+        "rotate_left_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "rotate_left_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 0,
+            "pin_index" : 26,
+            "active_low" : false,
+            "approach_speed" : {
+                "reference" : ["rotate", "control_param", "init_vel"],
+                "sign" : 1
+            }
+        },
+
+        "rotate_right_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "rotate_right_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 23,
+            "active_low" : false,
+            "approach_speed" : {
+                "reference" : ["rotate", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "rotate_motor" : {
+            "driver_name" : "MotorDriver_Kinco",
+            "dev_name" : "rotate_motor",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "can_controller_id" : 0,
+            "can_node_id" : 3,
+            "zq_bind_port" : 10071,
+            "zq_is_client" : false,
+            "device_model" : "kinco"
+        },
+
+        "//" : "----------- arm related ----------",
+        "arm_left_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "arm_left_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 30,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["arm", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "arm_right_proximity" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "arm_right_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 31,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["arm", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "arm_left_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "arm_left_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 30,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["arm", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "arm_right_proximity_client" : {
+            "driver_name" : "ProximitySensorDriver_STM32",
+            "dev_name" : "arm_right_proximity",
+            "shared" : true,
+            "link_device" : "fork_stm32_client",
+            "data_output_mode" : "manual",
+            "pin_group" : 1,
+            "pin_index" : 31,
+            "active_low" : true,
+            "approach_speed" : {
+                "reference" : ["arm", "control_param", "init_vel"],
+                "sign" : -1
+            }
+        },
+
+        "arm_motor" : {
+            "driver_name" : "MotorDriver_Kinco",
+            "dev_name" : "arm_motor",
+            "shared" : true,
+            "link_device" : "fork_stm32",
+            "data_output_mode" : "manual",
+            "can_controller_id" : 0,
+            "can_node_id" : 1,
+            "zq_bind_port" : 10072,
+            "zq_is_client" : false,
+            "device_model" : "kinco"
+        }
+    }
+}
+

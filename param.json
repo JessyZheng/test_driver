@@ -1,0 +1,674 @@
+{
+    "kubot" : {
+        "device_model" : "A42N",
+        "hardware_ver" : "V3",
+        "robot_id" : 1,
+        "server_ip" : "127.0.0.1",
+        "server_port" : 4762
+    },
+    "env" : {
+        "box" : {
+            "box_width" : 0.4,
+            "box_height" : 0.3,
+            "box_depth" : 0.6,
+            "box_tag_height" : -0.05,
+            "box_tag_offset" : 0.0,
+            "box_tag_depth" : 0.015,
+            "min_box_width": 0.27,
+            "max_box_width": 0.47,
+            "box_concave_depth_offset":[0.0,0.025]
+        },
+        "location" : {
+            "shelf_tag_height" : 0.0,
+            "conveyor_tag_height" : 0.05,
+            "gap_between_box": 0.13,
+            "shelf_take_safe_dis": 0.01,
+            "check_box_location_thresh": 0.025,
+            "take_use_shelf_code_and_check_box": false,
+            "shelf_take_use_shelf_tag" : false,
+            "conveyor_take_use_box_tag": true,
+            "conveyor_put_confirm": false,
+            "take_finger_confirm_enable": true,
+            "take_finger_confirm_delay": 800,
+            "operation_buzzer_enable":  true
+        },
+        "dmcode":{
+            "shelf_sticker_height": 0.04,
+            "shelf_tag_inner_boarder_size": 0.028,
+            "shelf_tag_inner_boarder_gap": 0.01,
+            "box_sticker_height": 0.04,
+            "box_tag_inner_boarder_size": 0.028,
+            "box_tag_inner_boarder_gap": 0.01
+        },
+        "tray" : {
+            "layer_number": 8,
+            "layer_distance" : 450.0,
+            "bottom_layer_height" : 400.0
+        }
+    },
+    "bms": {
+        "cali_switch":           true,
+        "cali_discharg_vol":     47.5,
+        "cali_discharg_soc":     30.0,
+        "cali_discharg_cur":     5.0,
+        "cali_discharg_time":    120,
+        "cali_charg_vol":        53.0,
+        "cali_charg_soc":        95.0,
+        "cali_charg_cur":        7.0,
+        "cali_status_soc":       10.0
+    },
+    "detection_sensor":{
+        "fork_middle_enable":true,
+        "trays_enable": [
+            {"id":0, "enable":false},
+            {"id":1, "enable":false},
+            {"id":2, "enable":false},
+            {"id":3, "enable":false}
+        ]
+    },
+    "chassis_delivery":{
+        "chassis_delivery_test_enable": false,
+        "QRcodeIDs":["0010002000", "0010802000", "0011602000", "0012402000", "0013202000", "0014002000", "0014502000", "0015002000"]
+    },
+    "chassis":{
+        "qrcodereader" : {
+            "mount_bias_x" : 0.0,
+            "mount_bias_y" : 0.0,
+            "mount_bias_theta" : 0.0,
+            "mount_rotation" : -1.5708
+        },
+        "transmission":{
+            "left_wheel_diameter":0.22,
+            "right_wheel_diameter":0.22,
+            "baseline_length":0.835,
+            "gear_ratio":16.0,
+            "lost_distance":2.5
+        },
+        "control_param":{
+            "linear_max_vel" :    1.8,
+            "linear_max_acc" :    0.6,
+            "linear_max_dec" :    0.6,
+            "linear_acc_ratio" :  1,
+            "linear_dec_ratio" :  1,
+            "linear_jerk" :       0.6,
+
+            "rotate_max_vel" :    1.2,
+            "rotate_max_acc" :    0.8,
+            "rotate_max_dec" :    0.8,
+            "rotate_acc_ratio":   1,
+            "rotate_dec_ratio":   1,
+            "rotate_jerk" :       0.6
+        },
+
+        "control_emg_param":{
+            "obs_detection_dist_far":   3.5,
+            "obs_detection_dist_mid":   2.3,
+            "obs_detection_dist_short": 0.8,
+            "obs_vel_far":   0.6,
+            "obs_vel_mid":   0.4,
+            "obs_vel_short": 0.0,
+            "obs_dec_reference":   1.51111,
+            "obs_dec_ratio_far":   0.4,
+            "obs_dec_ratio_mid":   0.55,
+            "obs_dec_ratio_short": 1.08,
+
+            "emg_dev_lateral": 0.035,
+            "emg_dev_angular": 0.026
+        },
+
+        "control_ds_param":{
+            "linear_k1":           1.0,
+            "linear_k2":           3.0,
+            "linear_gamma":        0.65,
+            "linear_second_range": 0.2,
+            "linear_dec_margin":   0.15,
+            "linear_k_v_dynamic":  0.6,
+            "linear_k_v_max":      1.0,
+            "linear_k_v_min":      0.3,
+            "linear_k_w":          0.4,
+
+            "rotate_second_range": 0.08,
+            "rotate_dec_margin":   0.03,
+            "rotate_k_w_dynamic":  0.6,
+            "rotate_k_w_max":      1.2,
+            "rotate_k_w_min":      0.3,
+            "rotate_k_v":          0.8,
+
+            "acc_sampling_time":     0.01,
+            "dec_sampling_time":     0.002,
+            "control_sampling_time": 30000.0
+        },
+        "ekf_param":{
+            "ekf_sampling_time":10000.0,
+            "linear_v_variance":0.04,
+            "angular_w_variance":0.004,
+            "psd_camera_x":0.002,
+            "psd_camera_y":0.002,
+            "psd_camera_theta":0.005
+        },
+        "dimension":{
+            "x_camera_arccenter":0.3525,
+            "y_camera_arccenter":0.552645
+        }
+    },
+    "lift" : {
+        "control_param" : {
+            "pitch":-11.51959194,
+            "encoder_round_ticks":10000.0,
+            "init_vel" : 50.0,
+            "init_bias" : -396.0,
+            "noload_max_vel" : 570.0,
+            "noload_acc_rate" : 1500.0,
+            "noload_dec_rate" : 2000.0,
+            "loaded_max_vel" : 570.0,
+            "loaded_acc_rate" : 520.0,
+            "loaded_dec_rate" : 690.0,
+            "tune_max_vel" : 570.0,
+            "tune_acc_rate" : 1700.0,
+            "tune_dec_rate" : 2300.0
+        },
+        "transmission" : {
+            "upper_bound" : 4230.0,
+            "lower_bound" : 375.0,
+            "no_rotate_height":3500.0,
+            "rotate_height_min": 270
+        }
+    },
+    "stretch":{
+        "control_param":{
+            "pitch":-20.240625,
+            "encoder_round_ticks":10000.0,
+            "init_vel" : 110.0,
+            "init_bias" : -38.0,
+            "noload_max_vel" : 1100.0,
+            "noload_acc_rate" : 3000.0,
+            "noload_dec_rate" : 3000.0,
+            "loaded_max_vel" : 1100.0,
+            "loaded_acc_rate" : 1100.0,
+            "loaded_dec_rate" : 1100.0,
+            "extra_max_vel" : 300.0,
+            "extra_acc_rate" : 1100.0,
+            "extra_dec_rate" : 1100.0,
+            "push_slow_max_vel" : 1100.0,
+            "push_slow_acc_rate" : 1100.0,
+            "push_slow_dec_rate" : 1100.0
+        },
+        "transmission":{
+            "max_length" : 950.0,
+            "arm_width":36.0,
+            "inner_width":440.0,
+            "inner_depth":615.0,
+            "rotate_center_offset":280.0,
+            "camera_to_fork_edge":73.0,
+            "safe_release_pos":5.0,
+            "external_put_confirm_offset":15.0,
+            "external_take_depth_offset":-15.0,
+            "external_take_pull_pos":0.0,
+            "external_put_pull_pos":0.0,
+            "internal_take_pull_pos":0.0,
+            "internal_put_pull_pos":0.0,
+            "internal_take_push_pos" : 750.0,
+            "internal_put_push_pos" : 750.0,
+            "external_inner_push_offset":0.0,
+            "internal_inner_push_offset":0.0,
+            "external_pull_slow_offset":0.0,
+            "internal_pull_slow_offset":0.0,
+            "internal_push_use_extra_push" : true,
+            "custom_box_twice_move_enable" : false
+        }
+    },
+
+    "arm":{
+        "control_param":{
+            "pitch":0.75,
+            "encoder_round_ticks":10000.0,
+            "init_vel" : 5.0,
+            "init_bias" : -13.0,
+            "loaded_max_vel" : 30.0,
+            "loaded_acc_rate" : 37.5,
+            "loaded_dec_rate" : 37.5,
+            "extra_max_vel" : 30.0,
+            "extra_acc_rate" : 37.5,
+            "extra_dec_rate" : 37.5
+        },
+        "transmission":{
+            "max_length": 100,
+            "inner_rng_width" : [340.0,440.0],
+            "box_margin_distance" : 40
+        }
+    },
+
+    "rotate" : {
+        "control_param" : {
+            "pitch":0.08545132,
+            "encoder_round_ticks":10000.0,
+            "init_vel" : 0.26,
+            "init_bias" : 0.0,
+            "noload_max_vel" : 2.6,
+            "noload_acc_rate" : 4.0,
+            "noload_dec_rate" : 4.0,
+            "loaded_max_vel" : 2.18,
+            "loaded_acc_rate" : 4.0,
+            "loaded_dec_rate" : 4.0,
+            "tune_max_vel" : 2.6,
+            "tune_acc_rate" : 17.0,
+            "tune_dec_rate" : 17.0
+        },
+        "transmission" : {
+            "max_angle" : 1.74533,
+            "min_angle" : -1.74533,
+            "left_binop_max" : 1.74533,
+            "left_binop_min" : 1.41372,
+            "right_binop_max" : -1.41372,
+            "right_binop_min" : -1.74533,
+            "rotate_no_proximity_sensor" : false
+        }
+    },
+    "finger" : {
+        "control_param" : {
+            "l_pitch":1.0,
+            "l_encoder_round_ticks":10000.0,
+            "r_pitch":1.0,
+            "r_encoder_round_ticks":10000.0,
+            "l_max_vel" : 1.0,
+            "l_acc_rate" : 60.0,
+            "l_dec_rate" : 60.0,
+            "r_max_vel" : 1.0,
+            "r_acc_rate" : 60.0,
+            "r_dec_rate" : 60.0
+        }
+    },
+    "vision":{
+        "fork_2d_short_camera": {
+            "vendor": "hkvision",
+            "id": "00F98122270",
+            "fx": 1057.172426737712,
+            "fy": 1057.380510375247,
+            "px": 628.8465445802218,
+            "py": 533.976909011775,
+            "k1": -0.1310665053458177,
+            "k2": 0.1599984741685121,
+            "t1": 0.0006587339911309853,
+            "t2": 0.0002046209190576871,
+            "focal_tip_dz":0.023674,
+            "fork_camera_roll": 0.0,
+            "fork_camera_pitch": -1.5708,
+            "fork_camera_yaw": 3.14151552899,
+            "fork_camera_dx": 0.272,
+            "fork_camera_dy": 0.0,
+            "fork_camera_dz": 0.0291,
+            "camera_arm_height": 0.220
+        },
+        "fork_depth_camera":{
+            "vendor":"ifm",
+            "size_bias":0.0,
+            "mid_point_bias":-0.007,
+            "yaw_bias":0.0,
+            "fork_camera_dx":0.0,
+            "fork_camera_dy":0.2807,
+            "fork_camera_dz":0.218
+        },
+        "pid_param": {
+            "pid_rotate": {
+                "kp": 0.01,
+                "ki": 0.01,
+                "kd": 0.001
+            },
+            "pid_chassis": {
+                "kp": 0.01,
+                "ki": 0.01,
+                "kd": 0.001
+            }
+        },
+        "cloud_filter_param":{
+            "passthrough_x_min": 0.77,
+            "passthrough_x_max": 1.25,
+            "passthrough_y_min": -0.26,
+            "passthrough_y_max": 0.26,
+            "passthrough_y_min_limit": -0.50,
+            "passthrough_y_max_limit": 0.50,
+            "passthrough_z_min": -0.16,
+            "passthrough_z_max": 0.00,
+            "finalcrop_x_min": 0.77,
+            "finalcrop_x_max": 1.25,
+            "finalcrop_y_min": [-0.13,-0.075],
+            "finalcrop_y_max": [0.13,0.075],
+            "finalcrop_z_min": [-0.18,-0.16],
+            "finalcrop_z_max": [-0.02,-0.05],
+            "downsample_rate_first": 0.001,
+            "downsample_rate_final": 0.02,
+            "denoise_meank": 65,
+            "denoise_std_thresh": 4.0,
+            "ransac_k_search": 50,
+            "ransac_iteration": 50,
+            "ransac_d_thresh_first": 0.04,
+            "ransac_d_thresh_second": [0.006,0.002],
+            "ransac_d_thresh_third": 0.001,
+            "ransac_normal_w": 0.0001,
+            "points_percentage": 0.75
+        },
+        "fork_ekf":{
+            "enable_fork_ekf": false,
+            "uncertainty_rz_measurement": 0.3,
+            "uncertainty_rz_motor": 0.1,
+            "uncertainty_tx_measurement": 0.3,
+            "uncertainty_tx_motor": 0.05,
+            "rotate_long_dis_thresh_p_control_coefficient": 100,
+            "rotate_short_dis_thresh_p_control_coefficient": 3,
+            "rotate_i_control_coefficient": 0.001,
+            "chassis_p_control_coefficient": 500,
+            "chassis_i_control_coefficient": 0.001
+        },
+        "dmcode":{
+            "pixels_num_min":100,
+            "pixels_num_max":1850,
+            "pixels_size_min":15,
+            "pixels_size_max":640
+        },
+        "pipeline": {
+            "enable_inner_corner": true,
+            "enable_outer_corner": false,
+            "corner_detector_opt": false
+        },
+        "code128": {
+            "zbar_decode_minimum_quality": 10,
+            "code128_decode_maximum_uncertainty": 5,
+            "code128_scan_density": 5,
+            "code128_num_of_votes": 5
+        }
+    },
+    "zone-settings": [
+        {"zoneType":0,"max-speed":1.8,"obstacle-avoidance-area":13},
+        {"zoneType":1,"max-speed":1.8,"obstacle-avoidance-area":13,"control-strategy": "rack-storage"},
+        {"zoneType":2,"max-speed":0.8,"obstacle-avoidance-area":13},
+        {"zoneType":3,"max-speed":1.8,"obstacle-avoidance-area":13},
+        {"zoneType":4,"max-speed":1.8,"obstacle-avoidance-area":13},
+
+        {"zoneType":101,"max-speed":0.5,"obstacle-avoidance-area":14,"play-sound":true},
+        {"zoneType":102,"max-speed":0.5,"obstacle-avoidance-area":15}
+    ],
+    "ROBOT_COMMAND_POSITION_PARAMS": {
+        "INTERNAL_BIN_OP_INSPECT": {
+            "SCAN": {
+                "lift_dif_tar": 0.130,
+                "lift_rng_min":-0.020,
+                "lift_rng_max": 0.020
+            }
+        },
+        "INTERNAL_BIN_OP_INVENTORY": {
+            "INVENTORY": {
+                "lift_dif_tar": 0.130,
+                "lift_rng_min":-0.020,
+                "lift_rng_max": 0.020
+            }
+        },
+        "INTERNAL_BIN_OP_MOVE": {
+            "PUSH": {
+                "lift_dif_tar@": [
+                    {"@": 0.017,"srcTray_type":  0},
+                    {"@": 0.005,"srcTray_type":  1}
+                ],
+                "tray_bias@": [
+                    {"@": 0.000, "tray_id":0},
+                    {"@": 0.000, "tray_id":1},
+                    {"@": 0.000, "tray_id":2},
+                    {"@": 0.000, "tray_id":3},
+                    {"@": 0.000, "tray_id":4},
+                    {"@": 0.000, "tray_id":5},
+                    {"@": 0.000, "tray_id":6},
+                    {"@": 0.000, "tray_id":7}
+                ],
+                "finger_switch_forward_pos": 0.2
+            }
+        },
+        "EXTERNAL_BIN_OP_PUT": {
+            "TUNE": {
+                "lift_dif_tag":[0.110,-0.020],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "CONFIRM1": {
+                "lift_dif_tar": [0.060,0.035],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "CONFIRM2": {
+                "lift_dif_tar": [0.060],
+                "lift_rng_min":-0.020,
+                "lift_rng_max": 0.020
+            },
+            "AIMING": {
+                "lift_dif_tar@": [
+                    {"@": 0.025,"locationType":  0},
+                    {"@": 0.025,"locationType":  1},
+                    {"@": 0.015,"locationType": 10}
+                ],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "PUSH1": {
+                "stretch_dif_tar@": [
+                    {"@": 0.000,"locationType":  0},
+                    {"@": 0.000,"locationType":  1},
+                    {"@": 0.000,"locationType": 10}
+                ],
+                "stretch_rng_min":-0.020,
+                "stretch_rng_max": 0.020,
+                "velocity_ratio": 1.0,
+                "push2_forward_pos@": [
+                    {"@": 0.52,"locationType":  0},
+                    {"@": 0.52,"locationType":  1},
+                    {"@": 0.52,"locationType": 10}
+                ]
+            },
+            "PUSH1_PHASE2": {
+                "double_phase_control": false,
+                "flap_double_phase_control": true,
+                "operation_dist": 126.0,
+                "velocity_ratio": 0.3
+            },
+            "PUSH2": {
+                "lift_dif_tar@": [
+                    {"@": 0.010,"locationType":  0},
+                    {"@": 0.010,"locationType":  1},
+                    {"@": 0.000,"locationType": 10}
+                ],
+                "finger_switch_forward_pos@": [
+                    {"@": 0.0,"locationType":  0},
+                    {"@": 0.0,"locationType":  1},
+                    {"@": 0.45,"locationType": 10}
+                ]
+            }
+        },
+        "EXTERNAL_BIN_OP_TAKE": {
+            "TUNE": {
+                "lift_dif_tag@": [
+                    {"@": [-0.040,0.060],"locationType":  0},
+                    {"@": [0.060],"locationType":  1},
+                    {"@": [0.000],"locationType": 10}
+                ],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "TUNE1": {
+                "lift_dif_tag@": [
+                    {"@": [0.050],"locationType":  0},
+                    {"@": [0.000],"locationType":  1},
+                    {"@": [0.050],"locationType": 10}
+                ],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "CONFIRM": {
+                "lift_dif_tag":[-0.040,0.060],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "AIMING": {
+                "lift_dif_tar@": [
+                    {"@": -0.005,"locationType":  0},
+                    {"@": -0.005,"locationType":  1},
+                    {"@": 0.010,"locationType": 10}
+                ],
+                "lift_rng_min":-0.005,
+                "lift_rng_max": 0.005
+            },
+            "PUSH1": {
+                "velocity_ratio": 1.0
+            },
+            "PUSH1_PHASE2": {
+                "double_phase_control": false,
+                "flap_double_phase_control": true,
+                "operation_dist": 400.0,
+                "velocity_ratio": 0.3
+            },
+            "PUSH2": {
+                "stretch_dif_tar@": [
+                    {"@": 0.02,"locationType":  0},
+                    {"@": 0.02,"locationType":  1},
+                    {"@": 0.06,"locationType": 10}
+                ]
+            }
+        },
+        "EXTERNAL_BIN_OP_INVENTORY": {
+            "INVENTORY": {
+                "lift_dif_tar": 0.130,
+                "lift_rng_min":-0.020,
+                "lift_rng_max": 0.020
+            }
+        },
+        "EXTERNAL_BIN_OP_INSPECT": {
+            "SCAN": {
+                "lift_dif_tar": 0.130,
+                "lift_rng_min":-0.020,
+                "lift_rng_max": 0.020
+            }
+        }
+    },
+
+    "ROBOT_COMMAND_PHASE_THRESHOLD": {
+        "EXTERNAL_BIN_OP_PUT": {
+            "PREPARE": {
+                "FAST_ADJUST": {
+                    "dif_with_pre_target_position": [ 0.005, 0.005, 0.010 ],
+                    "dif_with_pre_target_height": 0.020,
+                    "dif_with_pre_chassis_position": [ 0.000, 0.000, 0.000 ]
+                }
+            },
+            "TUNE": {
+                "VISION": {
+                    "max_result_length": 3
+                },
+                "ADJUST_ROTATE": {
+                    "tx_forkOrigin_xaxis_cur": 0.015,
+                    "rz_forkRotated_pose_avg": 0.004,
+                    "rz_forkRotated_pose_dev": 0.008
+                },
+                "ADJUST_CHASSIS": {
+                    "tx_forkOrigin_xaxis_avg": 0.004
+                },
+                "SUCCESS": {
+                    "tz_forkRotated_code_dev": 0.002,
+                    "tx_forkOrigin_xaxis_avg": 0.005,
+                    "tx_forkOrigin_xaxis_dev": 0.008,
+                    "rz_forkRotated_pose_avg": 0.0052,
+                    "rz_forkRotated_pose_dev": 0.008
+                }
+            },
+            "SCAN": {
+                "VISION": {
+                    "max_result_length": 5
+                },
+                "SUCCESS": {
+                    "rz_forkRotated_pose_dev": 0.014
+                }
+            }
+        },
+        "EXTERNAL_BIN_OP_TAKE": {
+            "PREPARE": {
+                "FAST_ADJUST": {
+                    "dif_with_pre_target_position": [ 0.005, 0.005, 0.010 ],
+                    "dif_with_pre_target_height": 0.020,
+                    "dif_with_pre_chassis_position": [ 0.000, 0.000, 0.000 ]
+                }
+            },
+            "TUNE": {
+                "VISION": {
+                    "max_result_length": 3
+                },
+                "ADJUST_ROTATE": {
+                    "tx_forkOrigin_xaxis_cur": 0.015,
+                    "rz_forkRotated_pose_avg": 0.004,
+                    "rz_forkRotated_pose_dev": 0.008
+                },
+                "ADJUST_CHASSIS": {
+                    "tx_forkOrigin_xaxis_avg": 0.004
+                },
+                "SUCCESS": {
+                    "tz_forkRotated_code_dev": 0.006,
+                    "tx_forkOrigin_xaxis_avg": 0.005,
+                    "tx_forkOrigin_xaxis_dev": 0.008,
+                    "rz_forkRotated_pose_avg": 0.0052,
+                    "rz_forkRotated_pose_dev": 0.008
+                }
+            },
+            "SCAN": {
+                "VISION": {
+                    "max_result_length": 5
+                },
+                "SUCCESS": {
+                    "tz_forkRotated_pose_dev": 0.002,
+                    "rz_forkRotated_pose_dev": 0.014
+                }
+            },
+            "TUNE1": {
+                "VISION": {
+                    "max_result_length": 3
+                },
+                "ADJUST_CHASSIS": {
+                    "tx_forkOrigin_xaxis_avg": 0.005
+                },
+                "SUCCESS": {
+                    "tz_forkRotated_code_dev": 0.002,
+                    "tx_forkOrigin_xaxis_avg": 0.015,
+                    "tx_forkOrigin_xaxis_dev": 0.015
+                }
+            },
+            "TUNE2": {
+                "VISION": {
+                    "max_result_length": 3
+                },
+                "ADJUST_ROTATE": {
+                    "tx_forkOrigin_xaxis_cur1": 0.015,
+                    "tx_forkOrigin_xaxis_cur2": 0.015,
+                    "rz_forkRotated_pose_avg": 0.006
+                },
+                "ADJUST_CHASSIS": {
+                    "tx_forkOrigin_xaxis_cur": 0.004
+                },
+                "SUCCESS": {
+                    "tx_forkOrigin_xaxis_avg": 0.006,
+                    "tx_forkOrigin_xaxis_dev": 0.006,
+                    "rz_forkRotated_pose_avg": 0.010,
+                    "rz_forkRotated_pose_dev": 0.010
+                }
+            },
+            "SCAN1": {
+                "VISION": {
+                    "max_result_length": 3
+                },
+                "SUCCESS": {
+                    "tz_forkRotated_pose_dev": 0.002
+                }
+            },
+            "SCAN2": {
+                "VISION": {
+                    "max_result_length": 3
+                },
+                "SUCCESS": {
+                    "rz_forkRotated_pose_dev": 0.014
+                }
+            }
+        }
+    }
+}

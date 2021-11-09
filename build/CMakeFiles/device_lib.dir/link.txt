@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdevice_lib.a  CMakeFiles/device_lib.dir/serialport_driver.cpp.o
+/usr/bin/ranlib libdevice_lib.a

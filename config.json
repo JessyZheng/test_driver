@@ -1,0 +1,37 @@
+{
+    "include_files" : [
+        "param.json",
+        "device.json"
+    ],
+    "config_param_file" : "param.json",
+
+    "oamtool" : {
+        "enable" : true,
+        "listen_device" : "eth0",
+        "listen_port" : 4772,
+        "discovery_port" : 4772
+    },
+
+    "custom":{
+        "ignore_upper_dmcode" : false,
+        "ignore_smaller_dmcode" : false,
+        "event_report_enable" : false,
+        "low_charging_enable" : false,
+        "loadcell_sensor_enable" : false,
+        "depth_camera_enable" : false,
+        "rfid_sensor_enable"  : false,
+        "forklift_arm_enable": false,
+        "fork_foolproof_enable": false,
+        "fork_foolproof_power_enable": false
+    },
+
+    "debug" : {
+        "status_print_cycle" : 6,
+        "actuator_chassis_log" : true,
+        "actuator_lift_log" : false,
+        "actuator_stretch_log" : false,
+        "actuator_arm_log" : false,
+        "actuator_rotate_log" : false,
+        "actuator_finger_log" : false
+    }
+}
